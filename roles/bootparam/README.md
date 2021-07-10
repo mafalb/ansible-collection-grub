@@ -1,7 +1,5 @@
 # Ansible Role mafalb.grub.bootparam
 
-
-
 ## Basic Usage
 
 ```yaml
@@ -9,9 +7,17 @@
   hosts: localhost
   roles:
   - role: mafalb.grub.bootparam
+    bootparam: selinux
+    state: absent
 ```
 
 ## Variables
+
+```state: present``` # not implemented
+
+```state: absent``` # remove a boot parameter
+
+```bootparam: selinux``` # what boot parameter to operate on
 
 ## License
 

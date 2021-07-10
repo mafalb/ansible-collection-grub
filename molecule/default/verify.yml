@@ -11,9 +11,27 @@
   tasks:
 
   - name: diff config 1
-    command: diff /tmp/defaults.cfg /tmp/defaults-1.cfg
+    command: diff -u /tmp/defaults.cfg /tmp/defaults-1.cfg
 
   - name: diff config 2
-    command: diff /tmp/defaults.cfg /tmp/defaults-2.cfg
+    command: diff -u /tmp/defaults.cfg /tmp/defaults-2.cfg
+
+  - name: diff config 3
+    command: diff -u /tmp/defaults-0.cfg /tmp/defaults-3.cfg
+
+  - name: diff config 4
+    command: diff -u /tmp/defaults-space.cfg /tmp/defaults-4.cfg
+
+  - name: diff config 5
+    command: diff -u /tmp/defaults.cfg /tmp/defaults-5.cfg
+
+  - name: diff config 6
+    command: diff -u /tmp/defaults-empty.cfg /tmp/defaults-6.cfg
+
+  - name: diff config 7
+    command: diff -u /tmp/defaults.cfg /tmp/defaults-7.cfg
+
+  - name: diff config 8
+    command: diff -u /tmp/defaults.cfg /tmp/defaults-8.cfg
 
 ...

@@ -37,7 +37,16 @@
       dest: /tmp/{{ item }}
     loop:
     - defaults.cfg
+    - defaults-0.cfg
+    - defaults-space.cfg
+    - defaults-empty.cfg
     - defaults-1.cfg
     - defaults-2.cfg
+    - defaults-3.cfg
+    - defaults-4.cfg
+    - defaults-5.cfg
+    - defaults-6.cfg
+    - defaults-7.cfg
+    - defaults-8.cfg
 
 ...

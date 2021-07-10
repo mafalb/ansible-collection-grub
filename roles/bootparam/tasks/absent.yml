@@ -1,11 +1,26 @@
 # vim: set ft=yaml ts=2 expandtab:
 ---
 
-- replace:
+- name: get content of GRUB_CMDLINE_LINUX
+  command: grep ^GRUB_CMDLINE_LINUX= {{ grub_defaults_file }}
+  register: _grub_cmdline_linux
+
+- block:
+  - name: current content of GRUB_CMDLINE_LINUX
+    debug:
+      var=_grub_cmdline_linux.stdout_lines[-1]
+  - name: future content of GRUB_CMDLINE_LINUX
+    debug:
+      msg="{{ _grub_cmdline_linux.stdout_lines[-1]|regex_replace(' *\\bselinux(=\\S*)?','') }}"
+  tags:
+  - never
+  - debug
+  
+- lineinfile:
     path: "{{ grub_defaults_file }}"
-    regexp: '^(GRUB_CMDLINE_LINUX=(.*\S)?)( *)?(\b{{ bootparam }}(=\S*))'
-    replace: '\1'
-    backup: true
+    regexp: '^GRUB_CMDLINE_LINUX='
+    line: "{{ _grub_cmdline_linux.stdout_lines[-1]|regex_replace(' *\\bselinux(=[^\\s\\\"]*)?','') }}"
     validate: bash -s %s
+    backup: true
 
 ...

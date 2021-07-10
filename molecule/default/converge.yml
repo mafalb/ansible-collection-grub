@@ -20,6 +20,36 @@
     bootparam: selinux
     state: absent
 
+  - role: mafalb.grub.bootparam
+    grub_defaults_file: /tmp/defaults-3.cfg
+    bootparam: selinux
+    state: absent
+
+  - role: mafalb.grub.bootparam
+    grub_defaults_file: /tmp/defaults-4.cfg
+    bootparam: selinux
+    state: absent
+
+  - role: mafalb.grub.bootparam
+    grub_defaults_file: /tmp/defaults-5.cfg
+    bootparam: selinux
+    state: absent
+
+  - role: mafalb.grub.bootparam
+    grub_defaults_file: /tmp/defaults-6.cfg
+    bootparam: selinux
+    state: absent
+
+  - role: mafalb.grub.bootparam
+    grub_defaults_file: /tmp/defaults-7.cfg
+    bootparam: selinux
+    state: absent
+
+  - role: mafalb.grub.bootparam
+    grub_defaults_file: /tmp/defaults-8.cfg
+    bootparam: selinux
+    state: absent
+
   tasks: []
 
 ...
