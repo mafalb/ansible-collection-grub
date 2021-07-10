@@ -1,0 +1,19 @@
+# vim: set ft=yaml ts=2 expandtab:
+---
+
+- name: verify
+  hosts: all,!infrastructure_group
+
+  environment:
+    http_proxy: http://ci-proxy:3128
+    https_proxy: http://ci-proxy:3128
+
+  tasks:
+
+  - name: diff config 1
+    command: diff /tmp/defaults.cfg /tmp/defaults-1.cfg
+
+  - name: diff config 2
+    command: diff /tmp/defaults.cfg /tmp/defaults-2.cfg
+
+...

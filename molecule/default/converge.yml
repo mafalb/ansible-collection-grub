@@ -1,0 +1,25 @@
+# vim: set ft=yaml ts=2 expandtab:
+---
+
+- name: converge grub
+  hosts: all,!infrastructure_group
+
+  environment:
+    http_proxy: http://ci-proxy:3128
+    https_proxy: http://ci-proxy:3128
+
+  roles:
+
+  - role: mafalb.grub.bootparam
+    grub_defaults_file: /tmp/defaults-1.cfg
+    bootparam: selinux
+    state: absent
+
+  - role: mafalb.grub.bootparam
+    grub_defaults_file: /tmp/defaults-2.cfg
+    bootparam: selinux
+    state: absent
+
+  tasks: []
+
+...

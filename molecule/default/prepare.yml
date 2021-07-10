@@ -1,0 +1,43 @@
+# vim: set ft=yaml ts=2 expandtab:
+---
+
+- name: Set up proxy
+  hosts: proxy_group
+
+  pre_tasks:
+
+  # https://github.com/geerlingguy/ansible-role-composer/issues/54
+  #
+  - name: get status of systemd-tmpfiles-setup.service # noqa 303
+    command: systemctl status systemd-tmpfiles-setup.service
+    when: ansible_service_mgr == 'systemd'
+    changed_when: false
+
+  roles:
+
+  - name: mafalb.squid.server
+
+
+- name: Set up nodes
+  hosts: ci
+
+  environment:
+    http_proxy: http://ci-proxy:3128
+    https_proxy: http://ci-proxy:3128
+
+  tasks:
+
+  - name: diff is present
+    package:
+      name: diffutils
+
+  - name: prepare grub default files
+    copy:
+      src: "{{ item }}"
+      dest: /tmp/{{ item }}
+    loop:
+    - defaults.cfg
+    - defaults-1.cfg
+    - defaults-2.cfg
+
+...

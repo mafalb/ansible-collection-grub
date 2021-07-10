@@ -1,0 +1,11 @@
+# vim: set ft=yaml ts=2 expandtab:
+---
+
+- replace:
+    path: "{{ grub_defaults_file }}"
+    regexp: '^(GRUB_CMDLINE_LINUX=(.*\S)?)( *)?(\b{{ bootparam }}(=\S*))'
+    replace: '\1'
+    backup: true
+    validate: bash -s %s
+
+...
