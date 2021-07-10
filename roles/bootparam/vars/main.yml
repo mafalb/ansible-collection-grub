@@ -1,6 +1,6 @@
 # vim: set ft=yaml ts=2 expandtab:
 ---
 
-grub_config_file: "{{ '/boot/efi/EFI/' + {{ ansible_distribution }} + 'grub.cfg' if ansible_mounts|selectattr('mount','equalto','/boot/efi') else '/boot/grub2/grub.cfg' }}"
+grub_config_file: "{{ '/boot/efi/EFI/' + ansible_distribution + 'grub.cfg' if ansible_mounts|selectattr('mount','equalto','/boot/efi') else '/boot/grub2/grub.cfg' }}"
 
 ...

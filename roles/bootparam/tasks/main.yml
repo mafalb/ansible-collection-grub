@@ -6,6 +6,10 @@
     that:
     - state in [ 'present', 'absent' ]
 
+- name: grub is present
+  package:
+    name: grub2-tools
+
 - name: include_tasks for state
   include_tasks: "{{ state }}.yml"
 
