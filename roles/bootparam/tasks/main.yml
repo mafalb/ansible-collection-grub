@@ -6,9 +6,11 @@
     that:
     - state in [ 'present', 'absent' ]
 
-- name: grub is present
-  package:
-    name: grub2-tools
+- name: get OS specific variables
+  include_vars:
+    file: "{{ item }}"
+  with_first_found:
+  - "{{ ansible_os_family }}.yml"
 
 - name: include_tasks for state
   include_tasks: "{{ state }}.yml"
