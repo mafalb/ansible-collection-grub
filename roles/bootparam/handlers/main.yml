@@ -1,0 +1,7 @@
+# vim: set ft=yaml ts=2 expandtab:
+---
+
+- name: update grub2 configuration
+  command: grub2-mkconfig -o {{ grub_config_file }}
+
+...

@@ -35,6 +35,7 @@
     copy:
       src: "{{ item }}"
       dest: /tmp/{{ item }}
+      mode: "0644"
     loop:
     - defaults.cfg
     - defaults-0.cfg
