@@ -37,10 +37,10 @@ jobs:
         - debian9
         - debian10
         - debian11
-        - ubuntu-16
-        - ubuntu-18
-        - ubuntu-20
-        - ubuntu-2104
+        - ubuntu16
+        - ubuntu18
+        - ubuntu20
+        - ubuntu2104
 
         ansible_version:
         - '2.9'
