@@ -48,64 +48,52 @@ jobs:
         include:
 
         - target: fedora33
-          distribution: fedora
-          version: 33
+          image: docker.io/fedora:33
 
         - target: fedora34
-          distribution: fedora
-          version: 34
+          image: docker.io/fedora:34
 
         - target: c8s
-          distribution: centos
-          registry: "quay.io/centos/"
-          version: stream8
+          image: quay.io/centos/centos:stream8
 
         - target: alma8
-          distribution: almalinux
-          registry: "docker.io/almalinux/"
-          version: 8
-          test_molecule: true
-          test_controlnode: true
+          image: quay.io/almalinux/almalinux:8
 
         - target: rocky8
-          distribution: rockylinux
-          registry: "quay.io/rockylinux/"
-          tag: '8'
+          image: quay.io/rockylinux/rockylinux:8
 
         - target: centos7
-          distribution: centos
-          version: 7
+          image: quay.io/centos/centos:7
 
         - target: centos8
-          distribution: centos
-          version: 8
+          image: quay.io/centos/centos:8
 
         - target: debian9
-          distribution: debian
-          version: stretch
+          image: docker.io/debian:stretch
 
         - target: debian10
-          distribution: debian
-          version: buster
+          image: docker.io/debian:buster
 
-        - target: ubuntu-16.04
-          distribution: ubuntu
-          version: xenial
+        - target: debian11
+          image: docker.io/debian:bullseye
 
-        - target: ubuntu-18.04
-          distribution: ubuntu
-          version: bionic
+        - target: ubuntu16
+          image: docker.io/ubuntu:xenial
 
-        - target: ubuntu-20.04
-          distribution: ubuntu
-          version: focal
+        - target: ubuntu18
+          image: docker.io/ubuntu:bionic
+
+        - target: ubuntu20
+          image: docker.io/ubuntu:focal
+
+        - target: ubuntu2104
+          image: docker.io/ubuntu:hirsute
 
     env:
       
       ANSIBLE_VERSION: ${{ matrix.ansible_version }}
-      CI_REGISTRY: ${{ matrix.registry }}
-      CI_CONTAINER_IMAGE: ${{ matrix.distribution }}
-      CI_CONTAINER_TAG: ${{ matrix.version }}
+      CI_HOSTNAME: ${{ matrix.target }}
+      CI_IMAGE: ${{ matrix.image }}
       PY_COLORS: 1
       ANSIBLE_FORCE_COLOR: 1
  
